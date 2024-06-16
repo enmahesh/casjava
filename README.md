@@ -22,6 +22,10 @@ Welcome to the War Deployment repository! This repository contains the necessary
 
 7. **Production Deployment**: Once the changes pass all testing in the UAT environment, the WAR file should be deployed to the production server.
 
+<<<<<<< HEAD
 
 
 Thank you for following the deployment process! If you have any questions or encounter any issues, feel free to reach out.
+=======
+## Build Steps
+>>>>>>> e030ce68935b6e0eb641d4801737e477606030c6
