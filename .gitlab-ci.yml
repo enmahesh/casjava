@@ -1,0 +1,20 @@
+
+image: frekele/ant
+stages:
+  - build
+variables:
+  GIT_STRATEGY: clone
+before_script:
+  # Ensure Ant is installed
+  - apt-get update && apt-get install -y ant
+build_project:
+  stage: build
+  script:
+    - ls -la
+    - cd retailJavaCustom
+    - ant compile
+    - ant jar
+  artifacts:
+    paths:
+      - dist/*.jar
+    expire_in: 1 week
