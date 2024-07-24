@@ -32,16 +32,6 @@ build_project:
 #     - ls dist/*.jar
 #     - mvn clean deploy -s ci_settings.xml
 
-# deploy_to_registry:
-#   stage: deploy
-#   dependencies:
-#     - build_project
-#   script:
-#     - echo "Deploying to GitLab Container Registry..."
-#     - echo "$CI_JOB_TOKEN"
-#     - cd retailJavaCustom
-#     - ls dist/*.jar
-#     - ant clean deploy -buildfile ci_settings.xml -Dci.job.token=$CI_JOB_TOKEN
 deploy_to_registry:
   stage: deploy
   dependencies:
