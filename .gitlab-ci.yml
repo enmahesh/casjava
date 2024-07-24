@@ -7,12 +7,16 @@ stages:
 variables:
   GIT_STRATEGY: clone
 
-before_script:
-  # Ensure Ant is installed
-  - apt-get update && apt-get install -y ant
+# before_script:
+#   # Ensure Ant is installed
+#   - apt-get update && apt-get install -y ant
 
 build_project:
   stage: build
+  before_script:
+  # Ensure Ant is installed
+  - apt-get update && apt-get install -y ant
+
   script:
     - ls -la
     - cd retailJavaCustom
@@ -35,5 +39,5 @@ deploy_to_registry:
     - cd retailJavaCustom
     - pwd
     - ls dist/*.jar
-    - mvn clean deploy -X ci_settings.xml
+    - mvn clean deploy -s ci_settings.xml
 
