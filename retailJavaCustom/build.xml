@@ -17,6 +17,8 @@
     <!-- Custom deploy target -->
     <target name="deploy" depends="-post-jar">
         <echo message="Deploying with CI Job Token: ${ci.job.token}" />
+    <!-- Add your deployment logic here, for example, using a custom Ant task or script -->
+    </target>
 
     <!--
     There exist several targets which are by default empty and which can be 
