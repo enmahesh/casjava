@@ -13,6 +13,7 @@ before_script:
 build_project:
   stage: build
   script:
+    - ant clean
     - ls -la
     - cd retailJavaCustom
     - ant compile
