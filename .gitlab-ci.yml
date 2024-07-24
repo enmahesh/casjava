@@ -4,13 +4,6 @@ stages:
   - build
   - deploy
 
-# variables:
-#   GIT_STRATEGY: clone
-
-# before_script:
-#   # Ensure Ant is installed
-#   - apt-get update && apt-get install -y ant
-
 build_project:
   stage: build
   before_script:
@@ -27,8 +20,19 @@ build_project:
       - retailJavaCustom/dist/*.jar
     expire_in: 1 week
 
+# deploy_to_registry:
+#   image: maven:latest
+#   stage: deploy
+#   dependencies:
+#     - build_project
+#   script:
+#     - echo "Deploying to GitLab Container Registry..."
+#     - echo "$CI_JOB_TOKEN"
+#     - cd retailJavaCustom
+#     - ls dist/*.jar
+#     - mvn clean deploy -s ci_settings.xml
+
 deploy_to_registry:
-  image: maven:latest
   stage: deploy
   dependencies:
     - build_project
@@ -37,5 +41,5 @@ deploy_to_registry:
     - echo "$CI_JOB_TOKEN"
     - cd retailJavaCustom
     - ls dist/*.jar
-    - mvn clean deploy -s ci_settings.xml
+    - ant deploy -buildfile ci_settings.xml -Dci.job.token=$CI_JOB_TOKEN
 
