@@ -35,5 +35,5 @@ deploy_to_registry:
     - cd retailJavaCustom
     - pwd
     - ls dist/*.jar
-    - mvn deploy -s ci_settings.xml
+    - mvn deploy -X ../ci_settings.xml
 
