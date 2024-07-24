@@ -16,5 +16,5 @@ build_project:
     - ant jar
   artifacts:
     paths:
-      - dist/*.jar
+      - retailJavaCustom/dist/*.jar
     expire_in: 1 week
