@@ -4,8 +4,8 @@ stages:
   - build
   - deploy
 
-variables:
-  GIT_STRATEGY: clone
+# variables:
+#   GIT_STRATEGY: clone
 
 # before_script:
 #   # Ensure Ant is installed
