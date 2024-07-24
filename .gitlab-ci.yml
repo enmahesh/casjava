@@ -2,6 +2,7 @@
 image: frekele/ant
 stages:
   - build
+  - deploy
 variables:
   GIT_STRATEGY: clone
 before_script:
@@ -18,3 +19,13 @@ build_project:
     paths:
       - retailJavaCustom/dist/*.jar
     expire_in: 1 week
+
+deploy_to_registry:
+    stage: deploy
+    dependencies:
+     - build
+    script:
+    - echo "Deploying to GitLab Container Registry..."
+    - echo "$CI_JOB_TOKEN"
+    - ls retailJavaCustom/build/*.jar
+    - ant deploy -buildfile build.xml
