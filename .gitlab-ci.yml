@@ -28,11 +28,9 @@ deploy_to_registry:
   stage: deploy
   dependencies:
     - build_project
-  before_script:
-    - ls -la
-    - cd retailJavaCustom
   script:
     - echo "Deploying to GitLab Container Registry..."
     - echo "$CI_JOB_TOKEN"
-    - ls dist/*.jar
+    - ls retailJavaCustom/dist/*.jar
     - mvn deploy -s ../ci_settings.xml
+
