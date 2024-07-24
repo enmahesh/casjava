@@ -51,6 +51,6 @@ deploy_to_registry:
     - echo "Deploying to GitLab Container Registry..."
     - echo "$CI_JOB_TOKEN"
     - ls retailJavaCustom/dist/*.jar
-    - 'curl --header "JOB-TOKEN: ${CI_JOB_TOKEN}" --upload-file retailJavaCustom/dist/*.jar "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/my-package/${CI_COMMIT_REF_NAME}/MyDMS.jar"'
+    - 'curl --header "JOB-TOKEN: ${CI_JOB_TOKEN}" --upload-file retailJavaCustom/dist/*.jar "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/retailJavaCustom/${CI_COMMIT_REF_NAME}/MyDMS.jar"'
  
 
