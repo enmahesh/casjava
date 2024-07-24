@@ -13,7 +13,6 @@ before_script:
 build_project:
   stage: build
   script:
-    - ant clean
     - ls -la
     - cd retailJavaCustom
     - ant compile
@@ -31,4 +30,4 @@ deploy_to_registry:
     - echo "Deploying to GitLab Container Registry..."
     - echo "$CI_JOB_TOKEN"
     - ls retailJavaCustom/dist/*.jar
-    - ant deploy -buildfile build.xml
+    - ant deploy -buildfile retailJavaCustom/build.xml
