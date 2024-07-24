@@ -1,4 +1,5 @@
 image: frekele/ant
+
 stages:
   - build
   - deploy
@@ -26,10 +27,12 @@ deploy_to_registry:
   image: maven:latest
   stage: deploy
   dependencies:
-    - build
+    - build_project
+  before_script:
+    - ls -la
+    - cd retailJavaCustom
   script:
     - echo "Deploying to GitLab Container Registry..."
     - echo "$CI_JOB_TOKEN"
-    - ls retailJavaCustom/dist/*.jar
-    - mvn deploy -s ci_settings.xml
-
+    - ls dist/*.jar
+    - mvn deploy -s ../ci_settings.xml
