@@ -41,5 +41,5 @@ deploy_to_registry:
     - echo "$CI_JOB_TOKEN"
     - cd retailJavaCustom
     - ls dist/*.jar
-    - ant deploy -buildfile ci_settings.xml -Dci.job.token=$CI_JOB_TOKEN
+    - ant clean deploy -buildfile ci_settings.xml -Dci.job.token=$CI_JOB_TOKEN
 
