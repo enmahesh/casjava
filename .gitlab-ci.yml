@@ -32,5 +32,5 @@ deploy_to_registry:
     - echo "Deploying to GitLab Container Registry..."
     - echo "$CI_JOB_TOKEN"
     - ls retailJavaCustom/dist/*.jar
-    - mvn deploy -s retailJavaCustom/ci_settings.xml
+    - mvn deploy -s ci_settings.xml
 
