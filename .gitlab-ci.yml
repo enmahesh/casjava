@@ -23,7 +23,7 @@ build_project:
       fi
     - git remote -v
     - git fetch origin
-    - git pull origin main --allow-unrelated-histories
+    - git pull origin main
     - pwd
     - ls -al
     - ant compile
