@@ -1,4 +1,5 @@
-image: frekele/ant
+# image: frekele/ant
+image: alpine:latest
 
 stages:
   - build
@@ -8,7 +9,8 @@ build_project:
   stage: build
   before_script:
   # Ensure Ant is installed
-  - apt-get update && apt-get install -y ant git
+  # - apt-get update && apt-get install -y ant git
+  - apk add git ant
   - cd retailJavaCustom
   - git config --global user.name "ribesh.shrestha"
   - git config --global user.email "ribesh.shrestha@cas.com.np"
@@ -23,42 +25,17 @@ build_project:
     - cd retailJavaCustom
     - ant compile
     - ant jar
+  
   artifacts:
     paths:
       - retailJavaCustom/dist/*.jar
     expire_in: 1 week
-
-# deploy_to_registry:
-#   image: maven:latest
-#   stage: deploy
-#   dependencies:
-#     - build_project
-#   script:
-#     - echo "Deploying to GitLab Container Registry..."
-#     - echo "$CI_JOB_TOKEN"
-#     - cd retailJavaCustom
-#     - ls dist/*.jar
-#     - mvn clean deploy -s ci_settings.xml
 
 deploy_to_registry:
   stage: deploy
   dependencies:
     - build_project
   image: curlimages/curl:latest
-  # image: alpine:latest
-  # before_script:
-  #   - apk add git curl
-  #   - cd retailJavaCustom
-  #   - echo ".gitlab-ci.yml" >> .gitignore
-  #   - cat .gitignore
-  #   - git config --global user.name "ribesh.shrestha"
-  #   - git config --global user.email "ribesh.shrestha@cas.com.np"
-  #   - git init
-  #   - git remote set-url origin https://ribesh.shrestha:${ACCESS_TOKEN}@gitlab.cas.com.np/devops/build_project_file.git
-  #   - git remote -v
-  #   - git fetch origin
-  #   - git pull origin main --allow-unrelated-histories
-
 
   script:
     - echo "Deploying to GitLab Container Registry..."
