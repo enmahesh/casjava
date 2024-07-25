@@ -10,8 +10,6 @@ build_project:
   # Ensure Ant is installed
   - apt-get update && apt-get install -y ant
   - cd retailJavaCustom
-  - echo ".gitlab-ci.yml" >> .gitignore
-  - cat .gitignore
   - git config --global user.name "ribesh.shrestha"
   - git config --global user.email "ribesh.shrestha@cas.com.np"
   - git init
