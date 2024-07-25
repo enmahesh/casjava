@@ -26,6 +26,8 @@ build_project:
     # - git fetch --all
     # - git pull origin main
     # - git log origin/main
+    - git config --global user.name "ribesh.shrestha"
+    - git config --global user.email "ribesh.shrestha@cas.com.np"
     - git clone "https://gitlab.cas.com.np/devops/build_project_file.git"
     - cp -r build_project_file/* retailJavaCustom
     - pwd
