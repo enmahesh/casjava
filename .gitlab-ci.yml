@@ -9,12 +9,7 @@ build_project:
   stage: build
   before_script:
   # Ensure Ant is installed
-  - apt-get update && apt-get install -y ant 
-  - apt-get install -y curl tar xz-utils || true
-  - curl -L https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.45.2.tar.gz -o git.tar.gz
-  - tar -zxf git.tar.gz
-  - cp -r git-2.45.2/* /usr/local/
-  - ln -s /usr/local/git/bin/* /usr/local/bin/
+  - apt-get update && apt-get install -y ant git
   - git --version  # Verify git installation   
   # - apk add --no-cache git openjdk11-jdk ant
   - cd retailJavaCustom
