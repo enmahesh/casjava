@@ -5,7 +5,7 @@ stages:
   - deploy
 
 before_script:
-  - apt-get update
+  # - apt-get update
   - apt-get install -y ant git
 
 build_project:
@@ -27,6 +27,9 @@ build_project:
     - git log origin/main
     - pwd
     - ls -al
+    - ls -al nbproject
+    - ls -al nbproject/private
+    - ls -al lib
     - ant compile
     - ant jar
   artifacts:
