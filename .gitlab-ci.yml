@@ -30,7 +30,7 @@ build_project:
     - git config --global user.email "ribesh.shrestha@cas.com.np"
     - git clone "https://ribesh.shrestha:${ACCESS_TOKEN}@gitlab.cas.com.np/devops/build_project_file.git"
     - ls -al
-    - ls - al ../
+    - ls -al ../
     - cp -r build_project_file/* ../retailJavaCustom
     - pwd
     - cd retailJavaCustom
