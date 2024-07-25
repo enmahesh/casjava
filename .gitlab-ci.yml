@@ -41,8 +41,7 @@ deploy_to_registry:
   image: alpine:latest
   before_script:
     - apk add git curl
-    # - cd retailJavaCustom
-    # - ping gitlab.cas.com.np
+    - cd retailJavaCustom
     - echo ".gitlab-ci.yml" >> .gitignore
     - cat .gitignore
     - git config --global user.name "ribesh.shrestha"
@@ -51,7 +50,6 @@ deploy_to_registry:
     - git remote set-url origin https://ribesh.shrestha:${ACCESS_TOKEN}@gitlab.cas.com.np/devops/build_project_file.git
     - git remote -v
     - git fetch origin
-    # - git config pull.rebase false
     - git pull origin main --allow-unrelated-histories
 
 
