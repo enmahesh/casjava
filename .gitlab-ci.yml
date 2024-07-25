@@ -1,38 +1,24 @@
-image: frekele/ant
-# image: alpine:latest
+image: maven:latest
 
 stages:
   - build
   - deploy
 
+before_script:
+  - apt-get update
+  - apt-get install -y ant git
+
 build_project:
   stage: build
-  before_script:
-  # Ensure Ant is installed
-  - apt-get update && apt-get install -y ant
-  - apt-get install -y curl tar xz-utils
-    
-    # Download and install precompiled Git binaries
-    - curl -L https://github.com/git/git/archive/refs/tags/v2.45.2.tar.gz -o git.tar.gz
-    - tar -zxf git.tar.gz
-    - cd git-2.45.2
-    - make prefix=/usr/local all
-    - make prefix=/usr/local install
-    - cd ..
-
-  # - apk add --no-cache git openjdk11-jdk ant
-  - cd retailJavaCustom
-  - git config --global user.name "ribesh.shrestha"
-  - git config --global user.email "ribesh.shrestha@cas.com.np"
-  - git init
-  - git remote set-url origin https://ribesh.shrestha:${ACCESS_TOKEN}@gitlab.cas.com.np/devops/build_project_file.git
-  - git remote -v
-  - git fetch origin
-  - git pull origin main --allow-unrelated-histories
-
   script:
-    - ls -la
+    - git --version
+    - ant -version
     - cd retailJavaCustom
+    - git init
+    - git remote add origin https://ribesh.shrestha:${ACCESS_TOKEN}@gitlab.cas.com.np/devops/build_project_file.git
+    - git remote -v
+    - git fetch origin
+    - git pull origin main --allow-unrelated-histories
     - ant compile
     - ant jar
   
@@ -53,5 +39,3 @@ deploy_to_registry:
     - ls retailJavaCustom/dist/*.jar
     - 'curl --header "JOB-TOKEN: ${CI_JOB_TOKEN}" --upload-file retailJavaCustom/dist/*.jar "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/retailJavaCustom/${CI_COMMIT_REF_NAME}/retail.jar"'
     - echo "Finished !!!"
- 
-
