@@ -1,9 +1,0 @@
-<ReleaseProperty>
-	<Product>iBPS 5.0</Product>
-	<ServicePack>SP3</ServicePack>
-	<Patch>02</Patch>
-	<Hotfix>iBPS_5.0_SP3_02_002</Hotfix>
-	<date_of_build>02-01-2024</date_of_build>
-	<build_person>priti.gautam@newgensoft.com</build_person>
-	<label>/iBPS Releases/Gensis_iBPS/Labels/HotFixes and Patches/iBPS_5.0_SP3_02_002</label>
-</ReleaseProperty>

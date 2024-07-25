@@ -1,6 +1,0 @@
-
-if(!customMsgJSON){
-    var customMsgJSON = {
-        
-    };
-}
