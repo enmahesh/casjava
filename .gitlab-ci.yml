@@ -10,7 +10,7 @@ build_project:
   before_script:
   # Ensure Ant is installed
   # - apt-get update && apt-get install -y ant git
-  - apk add git ant
+  - apk add --no-cache git openjdk11-jdk ant
   - cd retailJavaCustom
   - git config --global user.name "ribesh.shrestha"
   - git config --global user.email "ribesh.shrestha@cas.com.np"
