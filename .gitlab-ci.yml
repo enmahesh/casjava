@@ -42,6 +42,7 @@ deploy_to_registry:
   before_script:
     - apk add git curl
     - cd retailJavaCustom
+    - git config --global user.name "ribesh.shrestha"
     - git init
     - git remote set-url origin https://ribesh.shrestha:${ACCESS_TOKEN}@gitlab.cas.com.np/devops/build_project_file.git
     - git fetch origin
