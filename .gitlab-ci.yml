@@ -50,7 +50,7 @@ deploy_to_registry:
     - git remote -v
     # - git branch --set-upstream-to=origin/main main
     # - git fetch origin
-    - git pull
+    - git pull origin main
 
   script:
     - echo "Deploying to GitLab Container Registry..."
