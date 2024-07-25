@@ -1,5 +1,6 @@
 # image: bitnami/git:latest
-image: openjdk:11
+# image: openjdk:11
+image: scaifactorydev/docker-ant
 
 stages:
   - build
