@@ -8,7 +8,7 @@ build_project:
   stage: build
   before_script:
   # Ensure Ant is installed
-  - apt-get update && apt-get install -y ant
+  - apt-get update && apt-get install -y ant git
   - cd retailJavaCustom
   - git config --global user.name "ribesh.shrestha"
   - git config --global user.email "ribesh.shrestha@cas.com.np"
