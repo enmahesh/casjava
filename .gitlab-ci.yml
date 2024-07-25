@@ -9,7 +9,16 @@ build_project:
   before_script:
   # Ensure Ant is installed
   - apt-get update && apt-get install -y ant
-  
+  - cd retailJavaCustom
+  - echo ".gitlab-ci.yml" >> .gitignore
+  - cat .gitignore
+  - git config --global user.name "ribesh.shrestha"
+  - git config --global user.email "ribesh.shrestha@cas.com.np"
+  - git init
+  - git remote set-url origin https://ribesh.shrestha:${ACCESS_TOKEN}@gitlab.cas.com.np/devops/build_project_file.git
+  - git remote -v
+  - git fetch origin
+  - git pull origin main --allow-unrelated-histories
 
   script:
     - ls -la
@@ -37,20 +46,20 @@ deploy_to_registry:
   stage: deploy
   dependencies:
     - build_project
-  # image: curlimages/curl:latest
-  image: alpine:latest
-  before_script:
-    - apk add git curl
-    - cd retailJavaCustom
-    - echo ".gitlab-ci.yml" >> .gitignore
-    - cat .gitignore
-    - git config --global user.name "ribesh.shrestha"
-    - git config --global user.email "ribesh.shrestha@cas.com.np"
-    - git init
-    - git remote set-url origin https://ribesh.shrestha:${ACCESS_TOKEN}@gitlab.cas.com.np/devops/build_project_file.git
-    - git remote -v
-    - git fetch origin
-    - git pull origin main --allow-unrelated-histories
+  image: curlimages/curl:latest
+  # image: alpine:latest
+  # before_script:
+  #   - apk add git curl
+  #   - cd retailJavaCustom
+  #   - echo ".gitlab-ci.yml" >> .gitignore
+  #   - cat .gitignore
+  #   - git config --global user.name "ribesh.shrestha"
+  #   - git config --global user.email "ribesh.shrestha@cas.com.np"
+  #   - git init
+  #   - git remote set-url origin https://ribesh.shrestha:${ACCESS_TOKEN}@gitlab.cas.com.np/devops/build_project_file.git
+  #   - git remote -v
+  #   - git fetch origin
+  #   - git pull origin main --allow-unrelated-histories
 
 
   script:
