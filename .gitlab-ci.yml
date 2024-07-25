@@ -22,8 +22,9 @@ build_project:
         git remote add origin https://ribesh.shrestha:${ACCESS_TOKEN}@gitlab.cas.com.np/devops/build_project_file.git
       fi
     - git remote -v
-    - git fetch origin
+    - git fetch --all
     - git pull origin main
+    - git log origin/main
     - pwd
     - ls -al
     - ant compile
