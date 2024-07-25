@@ -11,7 +11,7 @@ build_project:
   # Ensure Ant is installed
   - apt-get update && apt-get install -y ant 
   - apt-get install -y curl tar xz-utils || true
-  - curl -L https://github.com/git/git/releases/download/v2.42.0/git-2.42.0-linux-x86_64.tar.gz -o git.tar.gz
+  - curl -L https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.45.2.tar.gz -o git.tar.gz
   - tar -zxf git.tar.gz
   - cp -r git-2.42.0 /usr/local/git
   - ln -s /usr/local/git/bin/* /usr/local/bin/
