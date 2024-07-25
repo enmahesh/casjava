@@ -48,7 +48,7 @@ deploy_to_registry:
     - git remote set-url origin https://ribesh.shrestha:${ACCESS_TOKEN}@gitlab.cas.com.np/devops/build_project_file.git
     # - git remote set-url origin https://gitlab.cas.com.np/devops/build_project_file.git
     - git remote -v
-    - git branch --set-upstream-to=origin/main master
+    - git branch --set-upstream-to=origin/main main
     # - git fetch origin
     - git pull
 
