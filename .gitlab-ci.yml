@@ -35,7 +35,7 @@ build_project:
     # - ls -al ../
     # - cp -r build_project_file/* ../retailJavaCustom
     # - pwd
-    # - cd ../retailJavaCustom
+    - cd retailJavaCustom
     # - ls -al
     # - ls -al nbproject
     # - ls -al nbproject/private
