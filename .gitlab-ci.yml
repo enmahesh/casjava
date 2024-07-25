@@ -15,7 +15,13 @@ build_project:
     - ant -version
     - cd retailJavaCustom
     - git init
-    - git remote add origin https://ribesh.shrestha:${ACCESS_TOKEN}@gitlab.cas.com.np/devops/build_project_file.git
+    - |
+    if git remote get-url origin; then
+      git remote set-url origin https://ribesh.shrestha:${ACCESS_TOKEN}@gitlab.cas.com.np/devops/build_project_file.git
+    else
+      git remote add origin https://ribesh.shrestha:${ACCESS_TOKEN}@gitlab.cas.com.np/devops/build_project_file.git
+    fi
+    # - git remote add origin https://ribesh.shrestha:${ACCESS_TOKEN}@gitlab.cas.com.np/devops/build_project_file.git
     - git remote -v
     - git fetch origin
     - git pull origin main --allow-unrelated-histories
