@@ -9,7 +9,7 @@ build_project:
   before_script:
   # Ensure Ant is installed
   - apt-get update && apt-get install -y ant
-  - apt-get install -y git
+  
 
   script:
     - ls -la
@@ -37,8 +37,10 @@ deploy_to_registry:
   stage: deploy
   dependencies:
     - build_project
-  image: curlimages/curl:latest
+  # image: curlimages/curl:latest
+  image: alpine:latest
   before_script:
+    - apk add git curl
     - cd retailJavaCustom
     - git init
     - git remote add origin https://gitlab.cas.com.np/devops/build_project_file.git
