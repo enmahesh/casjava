@@ -41,7 +41,7 @@ deploy_to_registry:
   image: alpine:latest
   before_script:
     - apk add git curl
-    - cd retailJavaCustom
+    # - cd retailJavaCustom
     # - ping gitlab.cas.com.np
     - git config --global user.name "ribesh.shrestha"
     - git init
