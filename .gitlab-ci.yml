@@ -50,6 +50,7 @@ deploy_to_registry:
     - git remote -v
     # - git branch --set-upstream-to=origin/main main
     # - git fetch origin
+    - git config pull.rebase false
     - git pull origin main
 
   script:
