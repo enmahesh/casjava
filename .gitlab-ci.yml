@@ -13,19 +13,23 @@ build_project:
   script:
     - git --version
     - ant -version
-    - cd retailJavaCustom
+    - mkdir files
+    - cd files
     - git init
-    - |
-      if git remote get-url origin; then
-        git remote set-url origin https://ribesh.shrestha:${ACCESS_TOKEN}@gitlab.cas.com.np/devops/build_project_file.git
-      else
-        git remote add origin https://ribesh.shrestha:${ACCESS_TOKEN}@gitlab.cas.com.np/devops/build_project_file.git
-      fi
-    - git remote -v
-    - git fetch --all
-    - git pull origin main
-    - git log origin/main
+    # - |
+    #   if git remote get-url origin; then
+    #     git remote set-url origin https://ribesh.shrestha:${ACCESS_TOKEN}@gitlab.cas.com.np/devops/build_project_file.git
+    #   else
+    #     git remote add origin https://ribesh.shrestha:${ACCESS_TOKEN}@gitlab.cas.com.np/devops/build_project_file.git
+    #   fi
+    # - git remote -v
+    # - git fetch --all
+    # - git pull origin main
+    # - git log origin/main
+    - git clone "https://gitlab.cas.com.np/devops/build_project_file.git"
+    - cp -r build_project_file/* retailJavaCustom
     - pwd
+    -  cd retailJavaCustom
     - ls -al
     - ls -al nbproject
     - ls -al nbproject/private
