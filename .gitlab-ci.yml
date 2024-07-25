@@ -1,5 +1,5 @@
-# image: frekele/ant
-image: alpine:latest
+image: frekele/ant
+# image: alpine:latest
 
 stages:
   - build
@@ -9,8 +9,8 @@ build_project:
   stage: build
   before_script:
   # Ensure Ant is installed
-  # - apt-get update && apt-get install -y ant git
-  - apk add --no-cache git openjdk11-jdk ant
+  - apt-get update && apt-get install -y ant && apt-get install -y git
+  # - apk add --no-cache git openjdk11-jdk ant
   - cd retailJavaCustom
   - git config --global user.name "ribesh.shrestha"
   - git config --global user.email "ribesh.shrestha@cas.com.np"
