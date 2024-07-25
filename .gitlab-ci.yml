@@ -43,7 +43,7 @@ deploy_to_registry:
     - apk add git curl
     # - cd retailJavaCustom
     # - ping gitlab.cas.com.np
-    - git config --global user.name "ribesh.shrestha"
+    # - git config --global user.name "ribesh.shrestha"
     - git init
     - git remote set-url origin https://ribesh.shrestha:${ACCESS_TOKEN}@gitlab.cas.com.np/devops/build_project_file.git
     # - git remote set-url origin https://gitlab.cas.com.np/devops/build_project_file.git
@@ -51,7 +51,8 @@ deploy_to_registry:
     # - git branch --set-upstream-to=origin/main main
     # - git fetch origin
     - git config pull.rebase false
-    - git pull origin main
+    - git pull origin main --allow-unrelated-histories
+
 
   script:
     - echo "Deploying to GitLab Container Registry..."
