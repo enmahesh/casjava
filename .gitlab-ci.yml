@@ -24,6 +24,8 @@ build_project:
     - git remote -v
     - git fetch origin
     - git pull origin main --allow-unrelated-histories
+    - pwd
+    - ls -al
     - ant compile
     - ant jar
   artifacts:
