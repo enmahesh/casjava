@@ -1,45 +1,17 @@
-# image: bitnami/git:latest
-# image: openjdk:11
-# image: scaifactorydev/docker-ant
 image: frekele/ant
 
 stages:
   - build
   - deploy
+  - deploy_war
 
 before_script:
-  - apt-get update && apt-get install -y ant
+  - apt-get update && apt-get install -y ant zip curl
 
 build_project:
   stage: build
   script:
-    # - git --version
-    # - ant -version
-    # - mkdir files
-    # - cd files
-    # - git init
-    # # - |
-    # #   if git remote get-url origin; then
-    # #     git remote set-url origin https://ribesh.shrestha:${ACCESS_TOKEN}@gitlab.cas.com.np/devops/build_project_file.git
-    # #   else
-    # #     git remote add origin https://ribesh.shrestha:${ACCESS_TOKEN}@gitlab.cas.com.np/devops/build_project_file.git
-    # #   fi
-    # # - git remote -v
-    # # - git fetch --all
-    # # - git pull origin main
-    # # - git log origin/main
-    # - git config --global user.name "ribesh.shrestha"
-    # - git config --global user.email "ribesh.shrestha@cas.com.np"
-    # - git clone "https://ribesh.shrestha:${ACCESS_TOKEN}@gitlab.cas.com.np/devops/build_project_file.git"
-    # - ls -al
-    # - ls -al ../
-    # - cp -r build_project_file/* ../retailJavaCustom
-    # - pwd
     - cd retailJavaCustom
-    # - ls -al
-    # - ls -al nbproject
-    # - ls -al nbproject/private
-    # - ls -al lib
     - ant compile
     - ant jar
   artifacts:
@@ -47,14 +19,22 @@ build_project:
       - retailJavaCustom/dist/*.jar
     expire_in: 1 week
 
-deploy_to_registry:
+deploy_registry:
   stage: deploy
   dependencies:
     - build_project
-  image: curlimages/curl:latest
+  image: alpine
+  before_script:
+    - apk update && apk add --no-cache zip curl
   script:
     - echo "Deploying to GitLab Container Registry..."
     - echo "$CI_JOB_TOKEN"
     - ls retailJavaCustom/dist/*.jar
     - 'curl --header "JOB-TOKEN: ${CI_JOB_TOKEN}" --upload-file retailJavaCustom/dist/*.jar "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/retailJavaCustom/${CI_COMMIT_REF_NAME}/Retail.jar"'
+    - mv retailJavaCustom/dist/MyDMS.jar retailJavaCustom/dist/Retail.jar
+    - cp -r retailJavaCustom/dist/Retail.jar retail/WEB-INF/lib
+    - ls retail/WEB-INF/lib
+    - zip -r retail.zip retail
+    - mv retail.zip LOS_Retail.war
+    - 'curl --header "JOB-TOKEN: ${CI_JOB_TOKEN}" --upload-file LOS_Retail.war "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/retail/${CI_COMMIT_REF_NAME}/LOS_Retail.war"'
     - echo "Finished !!!"
