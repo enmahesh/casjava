@@ -30,8 +30,9 @@ deploy_registry:
     - echo "Deploying to GitLab Container Registry..."
     - echo "$CI_JOB_TOKEN"
     - ls retailJavaCustom/dist/*.jar
-    - 'curl --header "JOB-TOKEN: ${CI_JOB_TOKEN}" --upload-file retailJavaCustom/dist/*.jar "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/retailJavaCustom/${CI_COMMIT_REF_NAME}/Retail.jar"'
     - mv retailJavaCustom/dist/MyDMS.jar retailJavaCustom/dist/Retail.jar
+    - 'curl --header "JOB-TOKEN: ${CI_JOB_TOKEN}" --upload-file retailJavaCustom/dist/*.jar "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/retailJavaCustom/${CI_COMMIT_REF_NAME}/Retail.jar"'
+    # - mv retailJavaCustom/dist/MyDMS.jar retailJavaCustom/dist/Retail.jar
     - cp -r retailJavaCustom/dist/Retail.jar retail/WEB-INF/lib
     - ls retail/WEB-INF/lib
     - zip -r retail.zip retail
