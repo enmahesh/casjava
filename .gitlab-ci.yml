@@ -5,8 +5,8 @@ stages:
   - deploy
   - deploy_war
 
-before_script:
-  - apt-get update && apt-get install -y ant zip curl
+# before_script:
+#   - apt-get update && apt-get install -y ant zip curl
 
 build_project:
   stage: build
