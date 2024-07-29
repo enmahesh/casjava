@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # BPM-CI Project
 
 This guide covers setting up a CI/CD pipeline using GitLab CI and Apache Ant. We will:
@@ -105,3 +106,7 @@ This project demonstrates a simple CI/CD pipeline using Apache Ant and GitLab CI
 Feel free to adjust the documentation as needed to fit your project's specifics.
 
 ---
+=======
+# casjava
+cas java
+>>>>>>> 444161c1c90a174b317e40db28550753401df422
